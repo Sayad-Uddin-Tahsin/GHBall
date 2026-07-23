@@ -12,7 +12,7 @@ inputs:
     required: true
     default: ${{ github.repository_owner }}
   token:
-    description: 'GitHub token (use ${{ secrets.GITHUB_TOKEN }})'
+    description: 'GitHub token'
     required: false
     default: ${{ github.token }}
   speed:
