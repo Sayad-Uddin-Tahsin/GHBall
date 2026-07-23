@@ -1,0 +1,10 @@
+{
+  "name": "gitball",
+  "version": "1.0.0",
+  "description": "Turn GitHub contributions into a self-playing DX-Ball SVG.",
+  "main": "index.js",
+  "bin": {
+    "gitball": "./cli.js"
+  },
+  "license": "MIT"
+}
