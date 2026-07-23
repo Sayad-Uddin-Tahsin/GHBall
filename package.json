@@ -1,10 +1,30 @@
 {
   "name": "gitball",
   "version": "1.0.0",
-  "description": "Turn GitHub contributions into a self-playing DX-Ball SVG.",
+  "description": "Turn your GitHub contributions into a self-playing DX-Ball animation.",
   "main": "index.js",
   "bin": {
     "gitball": "./cli.js"
   },
-  "license": "MIT"
+  "files": [
+    "index.js",
+    "cli.js"
+  ],
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [
+    "github",
+    "contributions",
+    "svg",
+    "animation",
+    "breakout",
+    "dx-ball",
+    "gitball"
+  ],
+  "author": "Sayad Uddin Tahsin",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  }
 }

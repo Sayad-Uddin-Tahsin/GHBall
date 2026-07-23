@@ -1,24 +1,37 @@
 name: 'GitBall'
-description: 'Generate a GitBall SVG'
+description: 'Turn your GitHub contributions into a self‑playing DX‑Ball SVG animation.'
+
+# --- MARKETPLACE BRANDING ---
+branding:
+  icon: 'activity'      # A fitting icon from Feather icons
+  color: 'green'        # Matches GitHub's contribution green
+
 inputs:
   username:
+    description: 'GitHub username'
     required: true
     default: ${{ github.repository_owner }}
   token:
+    description: 'GitHub token (use ${{ secrets.GITHUB_TOKEN }})'
     required: false
     default: ${{ github.token }}
   speed:
+    description: 'Ball speed in pixels/second'
     required: false
-    default: '400'
+    default: '450'
   max_miss:
+    description: 'Max misses before forcing a guaranteed hit'
     required: false
     default: '3'
   theme:
+    description: 'light, dark, or auto (auto adapts to system preference)'
     required: false
-    default: 'light'
+    default: 'auto'
   score:
+    description: 'Show a live score counter'
     required: false
     default: 'false'
+
 runs:
   using: "composite"
   steps:

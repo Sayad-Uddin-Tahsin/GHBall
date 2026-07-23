@@ -5,7 +5,7 @@ Turn your GitHub contribution graph into a self‑playing DX‑Ball animation.
 [![npm version](https://img.shields.io/npm/v/gitball)](https://www.npmjs.com/package/gitball)
 [![Node.js Version](https://img.shields.io/badge/node-%3E%3D18.0-brightgreen)](https://nodejs.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![GitHub Action](https://img.shields.io/badge/Action-Ready-blue)](https://github.com/features/actions)
+[![GitHub Marketplace](https://img.shields.io/badge/Marketplace-GitBall-blue?logo=github)](https://github.com/marketplace/actions/gitball)
 
 <img src="https://github.com/Sayad-Uddin-Tahsin/GitBall/blob/GitBall/gitball.png"></img>
 
