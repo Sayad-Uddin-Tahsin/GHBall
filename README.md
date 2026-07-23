@@ -1,4 +1,4 @@
-# 🏓 GitBall
+# GitBall
 
 Turn your GitHub contribution graph into a self‑playing DX‑Ball animation.
 
@@ -7,15 +7,7 @@ Turn your GitHub contribution graph into a self‑playing DX‑Ball animation.
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![GitHub Action](https://img.shields.io/badge/Action-Ready-blue)](https://github.com/features/actions)
 
-
-## 🎬 The Animation
-
-Generate a live, looping SVG that smashes your yearly contributions into tiny bricks.
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/Sayad-Uddin-Tahsin/GitBall/blob/GitBall/gitball.svg">
-  <img alt="GitBall Animation" src="https://github.com/Sayad-Uddin-Tahsin/GitBall/blob/GitBall/gitball.svg" width="100%">
-</picture>
+<img src="https://github.com/Sayad-Uddin-Tahsin/GitBall/blob/GitBall/gitball.png"></img>
 
 ```html
 <picture>
@@ -26,16 +18,16 @@ Generate a live, looping SVG that smashes your yearly contributions into tiny br
 *(Place this `<picture>` snippet in your README, commit the generated SVGs, and watch it come alive!)*
 
 
-## 🤖 GitHub Action (Recommended)
+## GitHub Action (Recommended)
 
-Add this workflow to **your own repository** at `.github/workflows/gitball.yml` to get a fresh animation every day.
+Add this workflow to **your own repository** at `.github/workflows/gitball.yml` to get a fresh animation every 2 hours.
 
 ```yaml
 name: Generate GitBall Animation
 
 on:
   schedule:
-    - cron: '0 */2 * * *'   # Runs daily at midnight
+    - cron: '0 */2 * * *'   # Runs every 2 hours
   workflow_dispatch:      # Allows manual trigger
 
 jobs:
@@ -66,7 +58,7 @@ jobs:
           git push
 ```
 
-## 🎮 Customize It
+## Customize It
 Add any of these options to the with: section of your workflow to tweak the gameplay.
 
 | Option | Description | Default |
@@ -87,7 +79,7 @@ Add any of these options to the with: section of your workflow to tweak the game
     score: true
 ```
 
-## 💻 Run Locally (CLI)
+## Run Locally (CLI)
 Prefer to test it on your machine? Install the CLI globally or run it instantly with npx.
 
 Set your GitHub Token (only needed for local GraphQL API access):
