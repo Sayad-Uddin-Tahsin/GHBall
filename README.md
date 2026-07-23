@@ -1,18 +1,18 @@
-# GitBall
+# GHBall
 
 Turn your GitHub contribution graph into a self‑playing DX‑Ball animation.
 
-[![npm version](https://img.shields.io/npm/v/gitball)](https://www.npmjs.com/package/gitball)
+[![npm version](https://img.shields.io/npm/v/ghball)](https://www.npmjs.com/package/ghball)
 [![Node.js Version](https://img.shields.io/badge/node-%3E%3D18.0-brightgreen)](https://nodejs.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![GitHub Marketplace](https://img.shields.io/badge/Marketplace-GitBall-blue?logo=github)](https://github.com/marketplace/actions/gitball)
+[![GitHub Marketplace](https://img.shields.io/badge/Marketplace-GHBall-blue?logo=github)](https://github.com/marketplace/actions/ghball)
 
-<img src="https://github.com/Sayad-Uddin-Tahsin/GitBall/blob/GitBall/gitball.png"></img>
+<img src="https://github.com/Sayad-Uddin-Tahsin/GHBall/blob/GHBall/ghball.png"></img>
 
 ```html
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="gitball-dark.svg">
-  <img alt="GitBall Animation" src="gitball.svg" width="100%">
+  <source media="(prefers-color-scheme: dark)" srcset="ghball-dark.svg">
+  <img alt="GHBall Animation" src="ghball.svg" width="100%">
 </picture>
 ```
 *(Place this `<picture>` snippet in your README, commit the generated SVGs, and watch it come alive!)*
@@ -20,10 +20,10 @@ Turn your GitHub contribution graph into a self‑playing DX‑Ball animation.
 
 ## GitHub Action (Recommended)
 
-Add this workflow to **your own repository** at `.github/workflows/gitball.yml` to get a fresh animation every 2 hours.
+Add this workflow to **your own repository** at `.github/workflows/ghball.yml` to get a fresh animation every 2 hours.
 
 ```yaml
-name: Generate GitBall Animation
+name: Generate GHBall Animation
 
 on:
   schedule:
@@ -36,13 +36,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       
-      # Generate Light version (gitball.svg)
-      - uses: Sayad-Uddin-Tahsin/gitball@v1
+      # Generate Light version (ghball.svg)
+      - uses: Sayad-Uddin-Tahsin/ghball@v1
         with:
           username: ${{ github.repository_owner }}
 
-      # Generate Dark version (gitball-dark.svg)
-      - uses: Sayad-Uddin-Tahsin/gitball@v1
+      # Generate Dark version (ghball-dark.svg)
+      - uses: Sayad-Uddin-Tahsin/ghball@v1
         with:
           username: ${{ github.repository_owner }}
           theme: dark
@@ -53,8 +53,8 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add gitball*.svg
-          git diff --staged --quiet || git commit -m "chore: update GitBall animations [skip ci]"
+          git add ghball*.svg
+          git diff --staged --quiet || git commit -m "chore: update GHBall animations [skip ci]"
           git push
 ```
 
@@ -70,7 +70,7 @@ Add any of these options to the with: section of your workflow to tweak the game
 | `score` | Show a live score counter | `false` |
 
 ```yaml
-- uses: Sayad-Uddin-Tahsin/gitball@v1
+- uses: Sayad-Uddin-Tahsin/ghball@v1
   with:
     username: ${{ github.repository_owner }}
     speed: 600
@@ -91,7 +91,7 @@ export GITHUB_TOKEN=your_personal_access_token_here
 Run it:
 
 ```bash
-npx gitball --username torvalds --theme dark --score
+npx ghball --username torvalds --theme dark --score
 ```
 Or if you cloned the repository:
 

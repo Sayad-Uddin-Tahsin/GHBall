@@ -1,5 +1,5 @@
 {
-  "name": "gitball",
+  "name": "ghball",
   "version": "1.0.0",
   "description": "Turn your GitHub contributions into a self-playing DX-Ball animation.",
   "main": "index.js",

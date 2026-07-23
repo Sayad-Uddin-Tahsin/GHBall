@@ -448,7 +448,7 @@ ${scoreElements}
 // --- 5. EXECUTION ---
 (async () => {
   try {
-    const fileName = theme === 'dark' ? 'gitball-dark.svg' : 'gitball.svg';
+    const fileName = theme === 'dark' ? 'ghball-dark.svg' : 'ghball.svg';
     const weeks = await fetchContributions(GITHUB_USERNAME);
     const { svgContent, animDuration, volleyCounter, totalBricks } = generateDXBallSVG(weeks, BALL_SPEED, theme, showScore);
 
@@ -457,7 +457,7 @@ ${scoreElements}
 
     console.log(`
 ==================================================
-🏓 GitBall SVG Generated Successfully!
+🏓 GHBall SVG Generated Successfully!
 ==================================================
 📁 File Name:          ${fileName}
 💾 File Size:          ${fileSizeInKB} KB
