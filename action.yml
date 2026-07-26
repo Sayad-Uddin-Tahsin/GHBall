@@ -55,7 +55,7 @@ runs:
       uses: crazy-max/ghaction-github-pages@v3.1.0
       with:
         target_branch: GHBall
-        build_dir: dist
+        build_dir: output
         commit_message: "chore: update GHBall animations [skip ci]"
       env:
         GITHUB_TOKEN: ${{ inputs.token }}
