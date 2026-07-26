@@ -1,4 +1,5 @@
 const fs = require('fs');
+const path = require('path');
 
 // --- 1. PARSE COMMAND-LINE ARGUMENTS ---
 const args = process.argv.slice(2);
@@ -448,7 +449,15 @@ ${scoreElements}
 // --- 5. EXECUTION ---
 (async () => {
   try {
-    const fileName = theme === 'dark' ? 'ghball-dark.svg' : 'ghball.svg';
+    const outputDir = 'output';
+    
+    if (!fs.existsSync(outputDir)){
+      fs.mkdirSync(outputDir, { recursive: true });
+    }
+
+    const rawFileName = theme === 'dark' ? 'ghball-dark.svg' : 'ghball.svg';
+    const fileName = path.join(outputDir, rawFileName);
+    
     const weeks = await fetchContributions(GITHUB_USERNAME);
     const { svgContent, animDuration, volleyCounter, totalBricks } = generateDXBallSVG(weeks, BALL_SPEED, theme, showScore);
 
