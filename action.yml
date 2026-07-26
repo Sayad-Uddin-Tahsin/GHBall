@@ -3,8 +3,8 @@ description: 'Turn your GitHub contributions into a self‑playing DX‑Ball SVG
 
 # --- MARKETPLACE BRANDING ---
 branding:
-  icon: 'activity'      # A fitting icon from Feather icons
-  color: 'green'        # Matches GitHub's contribution green
+  icon: 'target'
+  color: 'green'
 
 inputs:
   username:
@@ -38,6 +38,7 @@ runs:
     - uses: actions/setup-node@v4
       with:
         node-version: '20'
+        
     - run: |
         node ${{ github.action_path }}/index.js \
           --username ${{ inputs.username }} \
@@ -48,3 +49,13 @@ runs:
       env:
         GITHUB_TOKEN: ${{ inputs.token }}
       shell: bash
+
+    # Push the output directory to the GHBall branch
+    - name: Push to GHBall branch
+      uses: crazy-max/ghaction-github-pages@v3.1.0
+      with:
+        target_branch: GHBall
+        build_dir: dist
+        commit_message: "chore: update GHBall animations [skip ci]"
+      env:
+        GITHUB_TOKEN: ${{ inputs.token }}
