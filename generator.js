@@ -62,7 +62,7 @@ if (!GITHUB_TOKEN) {
 }
 
 const COLORS_LIGHT = { 0: '#ffffff', 1: '#9be9a8', 2: '#40c463', 3: '#30a14e', 4: '#216e39' };
-const COLORS_DARK = { 0: '#2d333b', 1: '#9be9a8', 2: '#40c463', 3: '#30a14e', 4: '#216e39' };
+const COLORS_DARK = { 0: '#1e1e1e', 1: '#9be9a8', 2: '#40c463', 3: '#30a14e', 4: '#216e39' };
 
 const THEMES = {
   light: { bg: '#ffffff', text: '#24292f', paddle: '#24292f', ball: '#0969da', colors: COLORS_LIGHT },
@@ -358,7 +358,7 @@ function generateDXBallSVG(weeks, speed, theme, showScore) {
       }
       .score-${i} { animation: score-${i} ${animDuration}s infinite step-end; }
       `;
-      scoreElements += `    <text x="${SVG_W - 20}" y="30" font-family="monospace" font-size="16" class="score-text score-${i}" text-anchor="end" font-weight="bold">Score: ${i}</text>\n`;
+      scoreElements += `    <text x="${SVG_W - 20}" y="25" font-family="monospace" font-size="16" class="score-text score-${i}" text-anchor="end" font-weight="bold">Score: ${i}</text>\n`;
     }
   }
 
@@ -435,7 +435,7 @@ ${scoreKeyframes}
   <defs>
     ${fullStyle}
   </defs>
-  <rect width="${SVG_W}" height="${SVG_H}" class="bg" rx="6" stroke="#d0d7de" stroke-width="2"/>
+  <rect width="${SVG_W}" height="${SVG_H}" class="bg" rx="6" stroke="#d0d7de00" stroke-width="2"/>
 ${staticGridSVG}
 ${activeGridSVG}
 ${scoreElements}
@@ -455,7 +455,7 @@ ${scoreElements}
       fs.mkdirSync(outputDir, { recursive: true });
     }
 
-    const rawFileName = theme === 'dark' ? 'ghball-dark.svg' : 'ghball.svg';
+    const rawFileName = 'ghball.svg';
     const fileName = path.join(outputDir, rawFileName);
     
     const weeks = await fetchContributions(GITHUB_USERNAME);

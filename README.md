@@ -2,12 +2,11 @@
 
 Turn your GitHub contribution graph into a self‑playing DX‑Ball animation.
 
-[![npm version](https://img.shields.io/npm/v/ghball)](https://www.npmjs.com/package/ghball)
 [![Node.js Version](https://img.shields.io/badge/node-%3E%3D18.0-brightgreen)](https://nodejs.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![GitHub Marketplace](https://img.shields.io/badge/Marketplace-GHBall-blue?logo=github)](https://github.com/marketplace/actions/ghball)
 
-<img src="https://github.com/Sayad-Uddin-Tahsin/GHBall/blob/GHBall/ghball.png"></img>
+<img alt="GHBall Animation" src="https://github.com/Sayad-Uddin-Tahsin/GHBall/blob/GHBall/ghball.png?raw=true" width="100%">
 
 ```html
 <picture>
@@ -27,35 +26,25 @@ name: Generate GHBall Animation
 
 on:
   schedule:
-    - cron: '0 */2 * * *'   # Runs every 2 hours
-  workflow_dispatch:      # Allows manual trigger
+    - cron: '0 */2 * * *'
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
 
 jobs:
   generate:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
-      # Generate Light version (ghball.svg)
-      - uses: Sayad-Uddin-Tahsin/ghball@v1
+
+      # Generate GHBall animation
+      - uses: Sayad-Uddin-Tahsin/GHBall@main
         with:
           username: ${{ github.repository_owner }}
-
-      # Generate Dark version (ghball-dark.svg)
-      - uses: Sayad-Uddin-Tahsin/ghball@v1
-        with:
-          username: ${{ github.repository_owner }}
-          theme: dark
-          score: true
-
-      # Commit the SVGs back to your repo
-      - name: Commit and push
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add ghball*.svg
-          git diff --staged --quiet || git commit -m "chore: update GHBall animations [skip ci]"
-          git push
 ```
 
 ## Customize It

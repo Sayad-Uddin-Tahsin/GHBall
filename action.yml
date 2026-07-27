@@ -40,7 +40,7 @@ runs:
         node-version: '20'
         
     - run: |
-        node ${{ github.action_path }}/index.js \
+        node ${{ github.action_path }}/generator.js \
           --username ${{ inputs.username }} \
           --speed ${{ inputs.speed }} \
           --max-miss ${{ inputs.max_miss }} \
