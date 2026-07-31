@@ -509,16 +509,12 @@ To customize these options, simply add the option name and value under the \`wit
 ---
 <p align="center"><i><b>GHBall</b></i></p>
 `;
-
-    // 1. ALWAYS write the markdown summary file locally
-    fs.writeFileSync(mdFileName, markdownSummary.trim());
-
-    // 2. Write to GitHub Step Summary if running in GitHub Actions CI
     if (process.env.GITHUB_STEP_SUMMARY) {
       fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, markdownSummary);
+    } else {
+      fs.writeFileSync(mdFileName, markdownSummary.trim());
     }
 
-    // --- 3. CLEAN CONSOLE OUTPUT ---
     console.log(`
 ==================================================
 🏓 GHBall SVG Generated Successfully!
