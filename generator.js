@@ -11,7 +11,7 @@ let showScore = false;
 
 function printHelp() {
   console.log(`
-Usage: node index.js --username <username> [options]
+Usage: node generator.js --username <username> [options]
 
 Options:
   --username <username>   GitHub username (required)
@@ -22,7 +22,7 @@ Options:
   --help                  Show this help message
 
 Example:
-  node index.js --username torvalds --speed 500 --max-miss 2 --theme dark --score
+  node generator.js --username torvalds --speed 500 --max-miss 2 --theme dark --score
 `);
   process.exit(0);
 }
@@ -457,18 +457,74 @@ ${scoreElements}
 
     const rawFileName = 'ghball.svg';
     const fileName = path.join(outputDir, rawFileName);
+    const mdFileName = path.join(outputDir, 'summary.md');
     
     const weeks = await fetchContributions(GITHUB_USERNAME);
     const { svgContent, animDuration, volleyCounter, totalBricks } = generateDXBallSVG(weeks, BALL_SPEED, theme, showScore);
 
+    // Save SVG file
     fs.writeFileSync(fileName, svgContent.trim());
     const fileSizeInKB = (fs.statSync(fileName).size / 1024).toFixed(2);
 
+    // --- BUILD MARKDOWN CONTENT ---
+    const markdownSummary = `<h2 align="center"><b>GHBall Generation Summary</b></h2>
+
+### Build Statistics
+| Metric | Value | Metric | Value |
+| :--- | :--- | :--- | :--- |
+| **File Size** | **${fileSizeInKB} KB** | **Animation Duration** | **${animDuration.toFixed(2)}s** |
+| **Total Volleys** | **${volleyCounter}** | **Bricks Cleared** | **${totalBricks}** |
+| **Max Miss Limit** | **${MAX_MISS}** | **Theme** | ***\`${theme}\`*** |
+
+<br>
+
+### Option Configuration Guide
+| Option | Description | Default | Active Value |
+| :--- | :--- | :---: | :---: |
+| *\`speed\`* | Ball speed in pixels/second | *\`400\`* | *\`${BALL_SPEED}\`* |
+| *\`max_miss\`* | Max misses before forcing a guaranteed hit | *\`3\`* | *\`${MAX_MISS}\`* |
+| *\`theme\`* | Theme selection (\`light\`, \`dark\`, or \`auto\`) | *\`auto\`* | *\`${theme}\`* |
+| *\`score\`* | Show live score counter (\`true\` / \`false\`) | *\`false\`* | *\`${showScore}\`* |
+
+<br>
+
+<details>
+<summary><h3 style="display: inline;">How to configure for your own workflow?</h3></summary>
+
+To customize these options, simply add the option name and value under the \`with:\` section using a key-value format (separated by a colon) in the action's *\`yml\`* file:
+
+\`\`\`yaml
+- uses: Sayad-Uddin-Tahsin/ghball@latest
+  with:
+    username: \${{ github.repository_owner }}
+    # Add your custom options below:
+    speed: 500
+    theme: dark
+    score: true
+\`\`\`
+</details>
+<br>
+<br>
+
+---
+<p align="center"><i><b>GHBall</b></i></p>
+`;
+
+    // 1. ALWAYS write the markdown summary file locally
+    fs.writeFileSync(mdFileName, markdownSummary.trim());
+
+    // 2. Write to GitHub Step Summary if running in GitHub Actions CI
+    if (process.env.GITHUB_STEP_SUMMARY) {
+      fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, markdownSummary);
+    }
+
+    // --- 3. CLEAN CONSOLE OUTPUT ---
     console.log(`
 ==================================================
 🏓 GHBall SVG Generated Successfully!
 ==================================================
-📁 File Name:          ${fileName}
+📁 SVG File:           ${fileName}
+📝 Summary File:       ${mdFileName}
 💾 File Size:          ${fileSizeInKB} KB
 ⏱️ Animation Duration: ${animDuration.toFixed(2)}s
 🏓 Total Volleys:       ${volleyCounter}
@@ -477,5 +533,8 @@ ${scoreElements}
 🎨 Theme:              ${theme}
 ==================================================
 `);
-  } catch (error) { console.error('❌ Error:', error); }
+  } catch (error) { 
+    console.error('❌ Error:', error); 
+    process.exit(1);
+  }
 })();

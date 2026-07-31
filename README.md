@@ -3,16 +3,13 @@
 Turn your GitHub contribution graph into a self‑playing DX‑Ball animation.
 
 [![Node.js Version](https://img.shields.io/badge/node-%3E%3D18.0-brightgreen)](https://nodejs.org/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-yellow.svg)](https://opensource.org/licenses/Apache-2.0)
 [![GitHub Marketplace](https://img.shields.io/badge/Marketplace-GHBall-blue?logo=github)](https://github.com/marketplace/actions/ghball)
 
 <img alt="GHBall Animation" src="https://github.com/Sayad-Uddin-Tahsin/GHBall/blob/GHBall/ghball.png?raw=true" width="100%">
 
 ```html
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="ghball-dark.svg">
   <img alt="GHBall Animation" src="ghball.svg" width="100%">
-</picture>
 ```
 *(Place this `<picture>` snippet in your README, commit the generated SVGs, and watch it come alive!)*
 
@@ -39,10 +36,8 @@ jobs:
   generate:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-
       # Generate GHBall animation
-      - uses: Sayad-Uddin-Tahsin/GHBall@main
+      - uses: Sayad-Uddin-Tahsin/GHBall@latest
         with:
           username: ${{ github.repository_owner }}
 ```
@@ -59,7 +54,7 @@ Add any of these options to the with: section of your workflow to tweak the game
 | `score` | Show a live score counter | `false` |
 
 ```yaml
-- uses: Sayad-Uddin-Tahsin/ghball@v1
+- uses: Sayad-Uddin-Tahsin/ghball@latest
   with:
     username: ${{ github.repository_owner }}
     speed: 600
@@ -69,23 +64,18 @@ Add any of these options to the with: section of your workflow to tweak the game
 ```
 
 ## Run Locally (CLI)
-Prefer to test it on your machine? Install the CLI globally or run it instantly with npx.
+Prefer to test it on your machine? Clone the repository and run it!
 
-Set your GitHub Token (only needed for local GraphQL API access):
+Set your GitHub Token (only needed for GraphQL API access):
 
 ```bash
 export GITHUB_TOKEN=your_personal_access_token_here
 ```
 
-Run it:
+After cloning the repository:
 
 ```bash
-npx ghball --username torvalds --theme dark --score
-```
-Or if you cloned the repository:
-
-```bash
-node index.js --username torvalds --theme light
+node generator.js --username torvalds --theme light
 ```
 
 ⭐ Star this repo if you think your GitHub grid looks a bit better.
