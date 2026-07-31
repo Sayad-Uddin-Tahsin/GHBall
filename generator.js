@@ -435,7 +435,7 @@ ${scoreKeyframes}
   <defs>
     ${fullStyle}
   </defs>
-  <rect width="${SVG_W}" height="${SVG_H}" class="bg" rx="6" stroke="#d0d7de00" stroke-width="2"/>
+  <rect width="${SVG_W}" height="${SVG_H}" class="bg" rx="6" stroke="#a1a1a1" stroke-width="2"/>
 ${staticGridSVG}
 ${activeGridSVG}
 ${scoreElements}
@@ -491,7 +491,7 @@ ${scoreElements}
 <details>
 <summary><h3 style="display: inline;">How to configure for your own workflow?</h3></summary>
 
-To customize these options, simply add the option name and value under the \`with:\` section using a key-value format (separated by a colon) in the action's *\`yml\`* file:
+To customize these options, simply add the option name and value under the \`with:\` section using a key-value format (separated by a colon) in the workflow file:
 
 \`\`\`yaml
 - uses: Sayad-Uddin-Tahsin/ghball@latest
@@ -502,6 +502,20 @@ To customize these options, simply add the option name and value under the \`wit
     theme: dark
     score: true
 \`\`\`
+</details>
+<br>
+<details>
+<summary><h3 style="display: inline;">How to add to your README?</h3></summary>
+<br>
+
+Copy and paste the following HTML snippet directly into your \`README.md\` to display the generated GHBall animation:
+
+\`\`\`html
+<div align="center">
+  <img alt="GHBall Animation" src="https://github.com/${process.env.GITHUB_REPOSITORY || 'USERNAME/REPOSITORY'}/blob/GHBall/${fileName}?raw=true" height="60%" />
+</div>
+\`\`\`
+
 </details>
 <br>
 <br>
