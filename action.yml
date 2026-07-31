@@ -18,7 +18,7 @@ inputs:
   speed:
     description: 'Ball speed in pixels/second'
     required: false
-    default: '450'
+    default: '400'
   max_miss:
     description: 'Max misses before forcing a guaranteed hit'
     required: false
