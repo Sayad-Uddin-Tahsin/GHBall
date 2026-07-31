@@ -503,7 +503,6 @@ To customize these options, simply add the option name and value under the \`wit
     score: true
 \`\`\`
 </details>
-<br>
 <details>
 <summary><h3 style="display: inline;">How to add to your README?</h3></summary>
 <br>
@@ -512,7 +511,7 @@ Copy and paste the following HTML snippet directly into your \`README.md\` to di
 
 \`\`\`html
 <div align="center">
-  <img alt="GHBall Animation" src="https://github.com/${process.env.GITHUB_REPOSITORY || 'USERNAME/REPOSITORY'}/blob/GHBall/${fileName}?raw=true" height="60%" />
+  <img alt="GHBall Animation" src="https://github.com/${process.env.GITHUB_REPOSITORY || 'USERNAME/REPOSITORY'}/blob/GHBall/${rawFileName}?raw=true" height="60%" />
 </div>
 \`\`\`
 
