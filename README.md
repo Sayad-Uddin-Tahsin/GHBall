@@ -48,7 +48,7 @@ Add any of these options to the with: section of your workflow to tweak the game
 | Option | Description | Default |
 | :--- | :--- | :--- |
 | `username` | GitHub username | `${{ github.repository_owner }}` |
-| `speed` | Ball speed (pixels/second) | `450` |
+| `speed` | Ball speed (pixels/second) | `400` |
 | `max-miss` | Misses before the AI forces a hit | `3` |
 | `theme` | `light` or `dark` | `light` |
 | `score` | Show a live score counter | `false` |
