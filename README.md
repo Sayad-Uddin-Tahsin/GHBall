@@ -9,9 +9,9 @@ Turn your GitHub contribution graph into a self‑playing DX‑Ball animation.
 <img alt="GHBall Animation" src="https://github.com/Sayad-Uddin-Tahsin/GHBall/blob/GHBall/ghball.png?raw=true" width="100%">
 
 ```html
-  <img alt="GHBall Animation" src="ghball.svg" width="100%">
+<img alt="GHBall Animation" src="ghball.svg" width="100%">
 ```
-*(Place this `<picture>` snippet in your README, commit the generated SVGs, and watch it come alive!)*
+*(Place this `<img>` snippet in your README with the link found in action summary in your README, and watch it come alive!)*
 
 
 ## GitHub Action (Recommended)
